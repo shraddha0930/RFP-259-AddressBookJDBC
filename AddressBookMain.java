@@ -9,7 +9,8 @@ public class AddressBookMain {
 
     public static final int INSERT = 1;
     public static final int SELECT = 2;
-    private static final int EXIT = 3;
+    public static final int UPDATE = 3;
+    private static final int EXIT = 4;
 
     public static void main(String[] args) {
         AddressBook addressBook = new AddressBook();
@@ -24,7 +25,8 @@ public class AddressBookMain {
                 System.out.println("Options are : ");
                 System.out.print("1.Insert\t");
                 System.out.print("2.Select\t");
-                System.out.print("3.Exit\n");
+                System.out.print("3.Update\t");
+                System.out.print("4.Exit\n");
                 System.out.print("Enter an option from above :- ");
                 option = input.nextInt();
 
@@ -33,8 +35,11 @@ public class AddressBookMain {
                         addressBook.insertRecord(connection);
                         break;
                     case SELECT:
-                       addressBook.selectRecord(connection);
-                       break;
+                        addressBook.selectRecord(connection);
+                        break;
+                    case UPDATE:
+                        addressBook.updateRecord(connection);
+                        break;
                     case EXIT:
                         break;
                 }
