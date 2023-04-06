@@ -68,7 +68,7 @@ public class AddressBook {
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter addressbook id to update record");
         int addressbook_id = Integer.parseInt(sc.nextLine());
-        String sql = "select * from address_book where addressbook_id = " +addressbook_id;
+        String sql = "select * from address_book where addressbook_id = " + addressbook_id;
         Statement statement = connection.createStatement();
         ResultSet resultSet = statement.executeQuery(sql);
         if (resultSet.next()) {
@@ -151,6 +151,34 @@ public class AddressBook {
                     break;
             }
 
+        }
+    }
+
+    public void countContact(Connection connection) throws SQLException {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter city name or state name:");
+        String name = scanner.next();
+        System.out.println("Count by \n1. City Name \n2. State Name");
+        int option = scanner.nextInt();
+        switch (option) {
+            case 1:
+                String sql = "select count(city) from address_book where city = ?";
+                PreparedStatement preparedStatement = connection.prepareStatement(sql);
+                preparedStatement.setString(1, String.valueOf(name));
+                ResultSet resultSet = preparedStatement.executeQuery();
+                resultSet.next();
+                int count = resultSet.getInt(1);
+                System.out.println("The count of" + name + "is" + count);
+                break;
+            case 2:
+                String sql1 = "select count(state) from address_book where city = ?";
+                PreparedStatement preparedStatement1 = connection.prepareStatement(sql1);
+                preparedStatement1.setString(1, String.valueOf(name));
+                ResultSet resultSet1 = preparedStatement1.executeQuery();
+                resultSet1.next();
+                int count1 = resultSet1.getInt(1);
+                System.out.println("The count of" + name + "is" + count1);
+                break;
         }
     }
 }
