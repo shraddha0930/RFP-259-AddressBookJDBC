@@ -10,7 +10,8 @@ public class AddressBookMain {
     public static final int INSERT = 1;
     public static final int SELECT = 2;
     public static final int UPDATE = 3;
-    private static final int EXIT = 4;
+    private static final int COUNT = 4;
+    private static final int EXIT = 5;
 
     public static void main(String[] args) {
         AddressBook addressBook = new AddressBook();
@@ -26,8 +27,9 @@ public class AddressBookMain {
                 System.out.print("1.Insert\t");
                 System.out.print("2.Select\t");
                 System.out.print("3.Update\t");
-                System.out.print("4.Exit\n");
-                System.out.print("Enter an option from above :- ");
+                System.out.print("4.Count\t");
+                System.out.print("5.Exit");
+                System.out.println("Enter an option from above :- ");
                 option = input.nextInt();
 
                 switch (option) {
@@ -39,6 +41,9 @@ public class AddressBookMain {
                         break;
                     case UPDATE:
                         addressBook.updateRecord(connection);
+                        break;
+                    case COUNT:
+                        addressBook.countContact(connection);
                         break;
                     case EXIT:
                         break;
