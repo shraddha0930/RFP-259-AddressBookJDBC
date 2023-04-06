@@ -1,5 +1,7 @@
 package org.example;
 
+import java.util.HashMap;
+
 public class Contact {
     private  int addressbook_id;
     private String addressbook_name;
