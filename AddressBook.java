@@ -162,7 +162,7 @@ public class AddressBook {
         int option = scanner.nextInt();
         switch (option) {
             case 1:
-                String sql = "select count(city) from address_book where city = ?";
+                String sqltocountcity = "select count(city) from address_book where city = ?";
                 PreparedStatement preparedStatement = connection.prepareStatement(sql);
                 preparedStatement.setString(1, String.valueOf(name));
                 ResultSet resultSet = preparedStatement.executeQuery();
@@ -171,7 +171,7 @@ public class AddressBook {
                 System.out.println("The count of" + name + "is" + count);
                 break;
             case 2:
-                String sql1 = "select count(state) from address_book where city = ?";
+                String sqltocountstate = "select count(state) from address_book where state = ?";
                 PreparedStatement preparedStatement1 = connection.prepareStatement(sql1);
                 preparedStatement1.setString(1, String.valueOf(name));
                 ResultSet resultSet1 = preparedStatement1.executeQuery();
